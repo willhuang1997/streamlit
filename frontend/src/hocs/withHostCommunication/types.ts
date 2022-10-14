@@ -28,8 +28,6 @@ export type DeployedAppMetadata = {
 }
 
 export interface HostCommunicationState {
-  authToken?: string
-  deployedAppMetadata: DeployedAppMetadata
   forcedModalClose: boolean
   hideSidebarNav: boolean
   isOwner: boolean
@@ -38,6 +36,7 @@ export interface HostCommunicationState {
   queryParams: string
   requestedPageScriptHash: string | null
   sidebarChevronDownshift: number
+  deployedAppMetadata: DeployedAppMetadata
   toolbarItems: IToolbarItem[]
 }
 
@@ -67,10 +66,6 @@ export type IHostToGuestMessage = {
   | {
       type: "REQUEST_PAGE_CHANGE"
       pageScriptHash: string
-    }
-  | {
-      type: "SET_AUTH_TOKEN"
-      authToken: string
     }
   | {
       type: "SET_IS_OWNER"
@@ -150,9 +145,6 @@ export type IGuestToHostMessage =
   | {
       type: "UPDATE_HASH"
       hash: string
-    }
-  | {
-      type: "WEBSOCKET_DISCONNECTED"
     }
 
 export type VersionedMessage<Message> = {

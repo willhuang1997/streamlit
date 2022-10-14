@@ -54,10 +54,7 @@ function withHostCommunication(
 ): ComponentType<any> {
   function ComponentWithHostCommunication(props: any): ReactElement {
     // TODO(vdonato): Refactor this to use useReducer to make this less
-    // unwieldy. We may want to consider installing the redux-toolkit package
-    // even if we're not using redux just because it's so useful for reducing
-    // this type of boilerplate.
-    const [authToken, setAuthToken] = useState<string | undefined>(undefined)
+    // unwieldy.
     const [forcedModalClose, setForcedModalClose] = useState(false)
     const [hideSidebarNav, setHideSidebarNav] = useState(false)
     const [isOwner, setIsOwner] = useState(false)
@@ -98,10 +95,6 @@ function withHostCommunication(
 
         if (message.type === "REQUEST_PAGE_CHANGE") {
           setRequestedPageScriptHash(message.pageScriptHash)
-        }
-
-        if (message.type === "SET_AUTH_TOKEN") {
-          setAuthToken(message.authToken)
         }
 
         if (message.type === "SET_IS_OWNER") {
@@ -153,7 +146,6 @@ function withHostCommunication(
         hostCommunication={
           {
             currentState: {
-              authToken,
               forcedModalClose,
               hideSidebarNav,
               isOwner,
