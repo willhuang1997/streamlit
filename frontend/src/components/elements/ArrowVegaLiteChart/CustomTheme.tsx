@@ -79,8 +79,6 @@ export function applyStreamlitTheme(config: any, theme: Theme): any {
       columnPadding: theme.spacing.smPx,
       rowPadding: theme.spacing.twoXSPx,
       padding: -1,
-      orient: "bottom",
-      columns: 4,
       symbolStrokeWidth: 4,
     },
     range: {
